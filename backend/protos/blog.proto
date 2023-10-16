@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package blog;
+
+
+option go_package = "backend/protos;blog";
+
+// メッセージ定義
+message Post {
+    string id = 1;
+    string title = 2;
+    string content = 3;
+    string author = 4;
+}
+
+message PostList {
+    repeated Post posts = 1;
+}
+
+// サービス定義
+service BlogService {
+    rpc ListPosts(Empty) returns (PostList);
+}
+
+message Empty {}
